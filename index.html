@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenBalance | Refined Focus for the Digital Age</title>
+    <meta name="description" content="Master your focus with ScreenBalance. Automatic awareness, premium themes, and deep focus tracking for iOS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: #111;
+            --accent: #33cc66;
+            --text-main: #ffffff;
+            --text-dim: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-ring {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(51, 204, 102, 0.05) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            display: inline-block;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 10px 30px rgba(51, 204, 102, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            background-color: #44dd77;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(51, 204, 102, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background-color: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 30px;
+            width: 320px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .price-card.pro {
+            border: 1px solid var(--accent);
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+        }
+
+        .price-badge {
+            background: var(--accent);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 5px 15px;
+            border-radius: 20px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .price-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .price-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .price-features {
+            text-align: left;
+            margin-bottom: 40px;
+            list-style: none;
+        }
+
+        .price-features li {
+            margin-bottom: 15px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-features li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav a {
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">
+                <span class="logo-ring"></span>
+                SCREENBALANCE
+            </a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Stay present.<br>Life is happening.</h1>
+            <p>Automatically track your focus and presence. Reclaim your attention with the world's most premium mindfulness engine for iOS.</p>
+            <a href="#" class="cta-button">Download on App Store</a>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🛰️</div>
+                <h3>Automatic Awareness</h3>
+                <p>System-wide lock detection tracks your re-entries without you ever having to open the app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Smart Burst Detection</h3>
+                <p>Identifies rapid-fire distraction sessions and helps you break involuntary digital habits.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Luxury Themes</h3>
+                <p>Obsidian, Ocean, Sunset, and Forest. Bespoke palettes that turn data into art.</p>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <h2>Choose Your Path</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h4>CORE</h4>
+                    <div class="price-value">Free</div>
+                    <ul class="price-features">
+                        <li>Automatic Presence Tracking</li>
+                        <li>7-Day History</li>
+                        <li>Classic Zen Theme</li>
+                        <li>Presence Score Insights</li>
+                    </ul>
+                    <a href="#" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 0.8rem;">GET STARTED</a>
+                </div>
+                <div class="price-card pro">
+                    <div class="price-badge">BEST VALUE</div>
+                    <h4>PRO</h4>
+                    <div class="price-value">$9.99</div>
+                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: -20px; margin-bottom: 20px;">LIFETIME ACCESS</p>
+                    <ul class="price-features">
+                        <li>Full 30-Day History</li>
+                        <li>Custom Presence Goals</li>
+                        <li>Premium Share Cards</li>
+                        <li>Exclusive Luxury Themes</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 0.8rem;">UPGRADE NOW</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="support.html">Support</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://github.com/deepak-kumar/ScreenBalance">Open Source</a>
+            </div>
+            <p>&copy; 2025 ScreenBalance. Built for a more intentional generation.</p>
+        </footer>
+    </div>
+</body>
+</html>

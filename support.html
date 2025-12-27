@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | ScreenBalance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: #111;
+            --accent: #33cc66;
+            --text-main: #ffffff;
+            --text-dim: #888;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
+
+        .support-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: left;
+        }
+
+        .support-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .email-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <h1>Support</h1>
+        <p>Need help with your focus journey? We're here for you.</p>
+
+        <div class="support-card">
+            <h2>Get in touch</h2>
+            <p>For technical support, feedback, or feature requests, please reach out via email:</p>
+            <a href="mailto:support@screenbalance.app" class="email-link">support@screenbalance.app</a>
+
+            <h2 style="margin-top: 40px;">Report an Issue</h2>
+            <p>You can also open an issue on our public distribution repository:</p>
+            <a href="https://github.com/deepak-kumar/screenbalance-distribution/issues"
+                style="color: var(--text-main); font-weight: 600;">GitHub Issues →</a>
+        </div>
+    </div>
+</body>
+
+</html>
