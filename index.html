@@ -81,7 +81,7 @@
 
         /* Hero */
         .hero {
-            padding: 100px 0;
+            padding: 100px 0 60px;
             text-align: center;
             background: radial-gradient(circle at top, rgba(51, 204, 102, 0.05) 0%, transparent 50%);
         }
@@ -92,6 +92,7 @@
             margin-bottom: 20px;
             letter-spacing: -2px;
             background: linear-gradient(to bottom, #fff, #999);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -119,6 +120,44 @@
         .cta-button:hover {
             transform: translateY(-2px);
             background-color: #44dd77;
+        }
+
+        /* Showcase */
+        .showcase {
+            padding: 60px 0;
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 40px;
+        }
+
+        .showcase::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .showcase::-webkit-scrollbar-thumb {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .screenshot {
+            flex: 0 0 280px;
+            scroll-snap-align: center;
+            border-radius: 30px;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot img {
+            width: 100%;
+            display: block;
+            border-radius: 26px;
         }
 
         /* Features */
@@ -208,7 +247,15 @@
         .price-value {
             font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .price-features {
@@ -295,6 +342,13 @@
             <a href="#" class="cta-button">Download on App Store</a>
         </section>
 
+        <section class="showcase">
+            <div class="screenshot"><img src="screen1.png" alt="ScreenBalance Score"></div>
+            <div class="screenshot"><img src="screen2.png" alt="ScreenBalance Pattern"></div>
+            <div class="screenshot"><img src="screen3.png" alt="ScreenBalance Themes"></div>
+            <div class="screenshot"><img src="screen4.png" alt="ScreenBalance Goal"></div>
+        </section>
+
         <section id="features" class="features">
             <div class="feature-card">
                 <div class="feature-icon">🛰️</div>
@@ -330,9 +384,10 @@
                         STARTED</a>
                 </div>
                 <div class="price-card pro">
-                    <div class="price-badge">BEST VALUE</div>
+                    <div class="price-badge">EARLY BIRD</div>
                     <h4>PRO</h4>
-                    <div class="price-value">$9.99</div>
+                    <div class="price-value">$0.99</div>
+                    <span class="price-strike">$9.99</span>
                     <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: -20px; margin-bottom: 20px;">
                         LIFETIME ACCESS</p>
                     <ul class="price-features">
