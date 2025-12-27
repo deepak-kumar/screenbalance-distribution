@@ -254,20 +254,59 @@
 
         .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
             display: block;
         }
 
+        .feature-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
         .feature-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .feature-card p {
             color: var(--text-dim);
             font-size: 1rem;
-            line-height: 1.7;
+            line-height: 1.8;
+        }
+
+        .metric-insight {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-insight span {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            border: 1px solid rgba(51, 204, 102, 0.2);
+        }
+
+        .metric-insight p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-style: italic;
+            line-height: 1.6;
         }
 
         /* Pricing */
@@ -443,19 +482,48 @@
 
         <section id="features" class="features reveal">
             <div class="feature-card">
-                <span class="feature-icon">🛰️</span>
-                <h3>Automatic Awareness</h3>
-                <p>System-wide lock detection tracks your re-entries without you ever having to open the app.</p>
+                <span class="feature-icon">�</span>
+                <span class="feature-label">CORE METRIC</span>
+                <h3>The Presence Score</h3>
+                <p>The heartbeat of your digital life. Calculated by comparing your intentional focus time against your
+                    total waking hours. High scores reflect a day of deep work and presence.</p>
+                <div class="metric-insight">
+                    <span>Insight</span>
+                    <p>Starts at "Pre-Day Zen" (100%) and adapts as your day unfolds.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌊</span>
+                <span class="feature-label">FOCUS GOLD STANDARD</span>
+                <h3>Calm Sessions</h3>
+                <p>Recognizing the beauty of sustained attention. Any period of focused activity exceeding 20 minutes is
+                    automatically logged as a "Calm Session."</p>
+                <div class="metric-insight">
+                    <span>Insight</span>
+                    <p>Calculated in real-time to show your longest streak of peace.</p>
+                </div>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">⚡</span>
-                <h3>Smart Burst Detection</h3>
-                <p>Identifies rapid-fire distraction sessions and helps you break involuntary digital habits.</p>
+                <span class="feature-label">HABIT TRACKING</span>
+                <h3>Distraction Bursts</h3>
+                <p>Understand the "shuffle." We group rapid, fragmented device checks into distinct 'Bursts' rather than
+                    single events, giving you a clearer picture of habit-based interruptions.</p>
+                <div class="metric-insight">
+                    <span>Insight</span>
+                    <p>Intelligent 10-second debounce filters out accidental unlocks.</p>
+                </div>
             </div>
             <div class="feature-card">
                 <span class="feature-icon">🎨</span>
-                <h3>Luxury Themes</h3>
-                <p>Obsidian, Ocean, Sunset, and Forest. Bespoke palettes that turn data into art.</p>
+                <span class="feature-label">AESTHETICS</span>
+                <h3>Luxury Collective</h3>
+                <p>Your data is art. Choose from Obsidian, Forest, Sunset, or Ocean themes to transform your dashboard
+                    into a bespoke reflection of your personal style.</p>
+                <div class="metric-insight">
+                    <span>Insight</span>
+                    <p>Full 30-day historical visualization included in Pro.</p>
+                </div>
             </div>
         </section>
 
