@@ -67,72 +67,70 @@
                 radial-gradient(circle at -10% 50%, rgba(51, 204, 102, 0.05), transparent 40%);
         }
 
-        /* Hero Layout */
+        /* Universal Typography & Spacing */
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+        }
+
+        /* Hero: The Product Showcase */
         .hero {
-            padding: 80px 0 100px;
+            padding: 100px 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
-            min-height: 85vh;
+            gap: 60px;
+            min-height: 90vh;
         }
 
         .hero-content {
-            flex: 1.2;
-            text-align: left;
-        }
-
-        .hero h1 {
-            font-size: 4.8rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            line-height: 1.05;
-            letter-spacing: -4px;
-            background: linear-gradient(to bottom, #fff 60%, rgba(255, 255, 255, 0.4));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-dim);
-            font-size: 1.3rem;
-            max-width: 500px;
-            margin-bottom: 48px;
-            font-weight: 400;
-        }
-
-        /* Hero Phone Stack */
-        .hero-visual {
             flex: 1;
-            position: relative;
-            height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
         }
 
+        .hero-visual {
+            flex: 1.2;
+            position: relative;
+            height: 600px;
+            perspective: 1500px;
+        }
+
+        /* Common Stack Styles */
         .phone-stack {
             position: relative;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .phone-stack.drift {
+            animation: hero-drift 12s ease-in-out infinite;
         }
 
         .stack-item {
             position: absolute;
-            width: 280px;
+            width: 260px;
             border-radius: 44px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-            cursor: pointer;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             background: #000;
             overflow: hidden;
+            will-change: transform, opacity;
         }
 
         .stack-item img {
@@ -141,52 +139,133 @@
             border-radius: 42px;
         }
 
-        /* Default Drifting Positions - A Cascading 8-Screen Spiral */
-        .stack-item:nth-child(1) {
-            transform: translate3d(-30px, -15px, 80px) rotateY(-18deg);
-            z-index: 8;
+        /* Interaction: General */
+        .hero-visual:hover .phone-stack.drift,
+        .journey-visual:hover .phone-stack.drift {
+            animation-play-state: paused;
         }
 
-        .stack-item:nth-child(2) {
-            transform: translate3d(-10px, 5px, 60px) rotateY(-10deg);
-            z-index: 7;
-        }
-
-        .stack-item:nth-child(3) {
-            transform: translate3d(10px, -20px, 40px) rotateY(0deg);
-            z-index: 6;
-        }
-
-        .stack-item:nth-child(4) {
-            transform: translate3d(30px, 15px, 20px) rotateY(12deg);
-            z-index: 5;
-        }
-
-        .stack-item:nth-child(5) {
-            transform: translate3d(-50px, 30px, 0px) rotateY(-5deg);
-            z-index: 4;
-            opacity: 0.8;
-        }
-
-        .stack-item:nth-child(6) {
-            transform: translate3d(60px, -40px, -20px) rotateY(15deg);
-            z-index: 3;
-            opacity: 0.6;
-        }
-
-        .stack-item:nth-child(7) {
-            transform: translate3d(-80px, -50px, -40px) rotateY(-12deg);
-            z-index: 2;
+        .hero-visual:hover .stack-item,
+        .journey-visual:hover .stack-item {
             opacity: 0.4;
+            filter: blur(2px);
         }
 
-        .stack-item:nth-child(8) {
-            transform: translate3d(90px, 55px, -60px) rotateY(18deg);
+        /* Hero Specific Positions (4 Screens) */
+        .hero .stack-item:nth-child(1) {
+            transform: translate3d(-40px, -20px, 60px) rotateY(-15deg);
+            z-index: 4;
+        }
+
+        .hero .stack-item:nth-child(2) {
+            transform: translate3d(-10px, 10px, 40px) rotateY(-8deg);
+            z-index: 3;
+        }
+
+        .hero .stack-item:nth-child(3) {
+            transform: translate3d(20px, -30px, 20px) rotateY(0deg);
+            z-index: 2;
+        }
+
+        .hero .stack-item:nth-child(4) {
+            transform: translate3d(50px, 40px, 0px) rotateY(10deg);
             z-index: 1;
-            opacity: 0.2;
+            opacity: 0.7;
         }
 
-        /* Decoupled Drift Animation - Applied only when NOT hovering */
+        .hero-visual:hover .stack-item:nth-child(1) {
+            transform: translate3d(-300px, -40px, 50px) rotateY(-20deg);
+            opacity: 1;
+        }
+
+        .hero-visual:hover .stack-item:nth-child(2) {
+            transform: translate3d(-100px, 40px, 50px) rotateY(-10deg);
+            opacity: 1;
+        }
+
+        .hero-visual:hover .stack-item:nth-child(3) {
+            transform: translate3d(100px, -40px, 50px) rotateY(10deg);
+            opacity: 1;
+        }
+
+        .hero-visual:hover .stack-item:nth-child(4) {
+            transform: translate3d(300px, 40px, 50px) rotateY(20deg);
+            opacity: 1;
+        }
+
+        /* Journey: The Philosophical Chapter */
+        .journey {
+            padding: 150px 0;
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+            gap: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(51, 204, 102, 0.02), transparent);
+        }
+
+        .journey-content {
+            flex: 1;
+        }
+
+        .journey-visual {
+            flex: 1;
+            position: relative;
+            height: 600px;
+            perspective: 1500px;
+        }
+
+        /* Journey Specific Positions (4 Splash Screens) */
+        .journey .stack-item:nth-child(1) {
+            transform: translate3d(30px, -20px, 60px) rotateY(15deg);
+            z-index: 4;
+        }
+
+        .journey .stack-item:nth-child(2) {
+            transform: translate3d(10px, 15px, 40px) rotateY(8deg);
+            z-index: 3;
+        }
+
+        .journey .stack-item:nth-child(3) {
+            transform: translate3d(-20px, -30px, 20px) rotateY(0deg);
+            z-index: 2;
+        }
+
+        .journey .stack-item:nth-child(4) {
+            transform: translate3d(-50px, 40px, 0px) rotateY(-10deg);
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .journey-visual:hover .stack-item:nth-child(1) {
+            transform: translate3d(300px, -40px, 50px) rotateY(20deg);
+            opacity: 1;
+        }
+
+        .journey-visual:hover .stack-item:nth-child(2) {
+            transform: translate3d(100px, 40px, 50px) rotateY(10deg);
+            opacity: 1;
+        }
+
+        .journey-visual:hover .stack-item:nth-child(3) {
+            transform: translate3d(-100px, -40px, 50px) rotateY(-10deg);
+            opacity: 1;
+        }
+
+        .journey-visual:hover .stack-item:nth-child(4) {
+            transform: translate3d(-300px, 40px, 50px) rotateY(-20deg);
+            opacity: 1;
+        }
+
+        /* Detail Pop-Out */
+        .stack-item:hover {
+            transform: translate3d(0, 0, 300px) scale(1.2) rotateY(0) !important;
+            z-index: 100 !important;
+            opacity: 1 !important;
+            filter: blur(0) !important;
+            box-shadow: 0 50px 100px rgba(51, 204, 102, 0.2) !important;
+            border-color: var(--accent) !important;
+        }
+
         @keyframes hero-drift {
 
             0%,
@@ -197,64 +276,6 @@
             50% {
                 transform: translateY(-30px);
             }
-        }
-
-        .phone-stack {
-            animation: hero-drift 10s ease-in-out infinite;
-            will-change: transform;
-        }
-
-        /* Stop the drift on hover to provide a stable interaction base */
-        .hero-visual:hover .phone-stack {
-            animation-play-state: paused;
-        }
-
-        /* Hover Expansion - Optimized spread with stable coordinates */
-        .hero-visual:hover .stack-item {
-            opacity: 0.5;
-            filter: blur(2px);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(1) {
-            transform: translate3d(-460px, -60px, 0) rotateY(-15deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(2) {
-            transform: translate3d(-330px, 40px, 0) rotateY(-8deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(3) {
-            transform: translate3d(-200px, -40px, 0) rotateY(-4deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(4) {
-            transform: translate3d(-70px, 60px, 0) rotateY(0deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(5) {
-            transform: translate3d(60px, -60px, 0) rotateY(4deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(6) {
-            transform: translate3d(190px, 40px, 0) rotateY(8deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(7) {
-            transform: translate3d(320px, -40px, 0) rotateY(15deg);
-        }
-
-        .hero-visual:hover .stack-item:nth-child(8) {
-            transform: translate3d(450px, 60px, 0) rotateY(20deg);
-        }
-
-        /* Interaction: Choosing a screen - Rock solid stability */
-        .stack-item:hover {
-            transform: translate3d(0, 0, 200px) scale(1.15) !important;
-            z-index: 100 !important;
-            opacity: 1 !important;
-            filter: blur(0) !important;
-            box-shadow: 0 60px 120px rgba(51, 204, 102, 0.4) !important;
-            border-color: var(--accent) !important;
         }
 
         .container {
@@ -681,25 +702,44 @@
 
         <section class="hero reveal">
             <div class="hero-content">
+                <span class="feature-label">STABLE RELEASE V1.0</span>
                 <h1>Stay present.<br>Life is happening.</h1>
                 <p>Automatically track your focus and presence. Reclaim your attention with the world's most premium
                     mindfulness engine for iOS.</p>
                 <div style="display: flex; gap: 20px; align-items: center;">
                     <a href="#" class="cta-button">Download Now</a>
-                    <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); letter-spacing: 2px;">V1.0.0
-                        STABLE</span>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="phone-stack">
-                    <div class="stack-item"><img src="screen1.png" alt="Dashboard 1"></div>
-                    <div class="stack-item"><img src="screen2.png" alt="Dashboard 2"></div>
-                    <div class="stack-item"><img src="splash1.png" alt="Splash 1"></div>
-                    <div class="stack-item"><img src="splash2.png" alt="Splash 2"></div>
-                    <div class="stack-item"><img src="splash3.png" alt="Splash 3"></div>
-                    <div class="stack-item"><img src="splash4.png" alt="Splash 4"></div>
-                    <div class="stack-item"><img src="screen3.png" alt="Dashboard 3"></div>
-                    <div class="stack-item"><img src="screen4.png" alt="Dashboard 4"></div>
+                <div class="phone-stack drift">
+                    <div class="stack-item"><img src="screen1.png" alt="Focus Dashboard"></div>
+                    <div class="stack-item"><img src="screen2.png" alt="Activity Details"></div>
+                    <div class="stack-item"><img src="screen3.png" alt="Premium Themes"></div>
+                    <div class="stack-item"><img src="screen4.png" alt="Growth Goals"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="journey reveal">
+            <div class="journey-content">
+                <div class="section-header">
+                    <span class="feature-label" style="color: #ffd700;">Chapter 1</span>
+                    <h2 style="font-size: 3rem;">Philosophy<br>by Design.</h2>
+                    <p>ScreenBalance respects your intelligence. Our onboarding isn't just a welcome—it's a transparency
+                        audit that establishes trust from the first second.</p>
+                </div>
+                <div class="scenario-box" style="border-left-color: #ffd700;">
+                    <h5 style="color: #ffd700;">The Zero-Cloud Promise</h5>
+                    <p>No phone numbers. No accounts. No servers. We built an app that starts with a handshake, not a
+                        data harvest.</p>
+                </div>
+            </div>
+            <div class="journey-visual">
+                <div class="phone-stack drift">
+                    <div class="stack-item"><img src="splash1.png" alt="Welcome Journey"></div>
+                    <div class="stack-item"><img src="splash2.png" alt="Privacy First"></div>
+                    <div class="stack-item"><img src="splash3.png" alt="The 1-Minute Rule"></div>
+                    <div class="stack-item"><img src="splash4.png" alt="Premium Upgrade"></div>
                 </div>
             </div>
         </section>
