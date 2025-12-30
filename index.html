@@ -139,131 +139,64 @@
             border-radius: 42px;
         }
 
-        /* Interaction: General */
-        .hero-visual:hover .phone-stack.drift,
-        .journey-visual:hover .phone-stack.drift {
-            animation-play-state: paused;
+        /* Carousel Solo Interaction: Automatic Rotation on Hover */
+        @keyframes carousel-wave {
+
+            0%,
+            100% {
+                transform: translate3d(0, 0, 0) scale(1) rotateY(0);
+                z-index: 10;
+                opacity: 0.6;
+                filter: blur(2px);
+            }
+
+            20%,
+            40% {
+                transform: translate3d(0, 0, 150px) scale(1.15) rotateY(0);
+                z-index: 100;
+                opacity: 1;
+                filter: blur(0);
+            }
+
+            60%,
+            80% {
+                transform: translate3d(0, 0, 0) scale(1) rotateY(0);
+                z-index: 10;
+                opacity: 0.6;
+                filter: blur(2px);
+            }
         }
 
         .hero-visual:hover .stack-item,
         .journey-visual:hover .stack-item {
-            opacity: 0.4;
-            filter: blur(2px);
+            animation: carousel-wave 8s infinite ease-in-out;
         }
 
-        /* Hero Specific Positions (4 Screens) */
-        .hero .stack-item:nth-child(1) {
-            transform: translate3d(-40px, -20px, 60px) rotateY(-15deg);
-            z-index: 4;
-        }
-
-        .hero .stack-item:nth-child(2) {
-            transform: translate3d(-10px, 10px, 40px) rotateY(-8deg);
-            z-index: 3;
-        }
-
-        .hero .stack-item:nth-child(3) {
-            transform: translate3d(20px, -30px, 20px) rotateY(0deg);
-            z-index: 2;
-        }
-
-        .hero .stack-item:nth-child(4) {
-            transform: translate3d(50px, 40px, 0px) rotateY(10deg);
-            z-index: 1;
-            opacity: 0.7;
-        }
-
-        /* Hero Hover: Sequential Fan-Out */
-        .hero-visual:hover .stack-item:nth-child(1) {
-            transform: translate3d(-300px, -40px, 50px) rotateY(-20deg);
-            opacity: 1;
-            transition-delay: 0s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(2) {
-            transform: translate3d(-100px, 40px, 50px) rotateY(-10deg);
-            opacity: 1;
-            transition-delay: 0.1s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(3) {
-            transform: translate3d(100px, -40px, 50px) rotateY(10deg);
-            opacity: 1;
-            transition-delay: 0.2s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(4) {
-            transform: translate3d(300px, 40px, 50px) rotateY(20deg);
-            opacity: 1;
-            transition-delay: 0.3s;
-        }
-
-        /* Journey: The Philosophical Chapter */
-        .journey {
-            padding: 150px 0;
-            display: flex;
-            align-items: center;
-            flex-direction: row-reverse;
-            gap: 100px;
-            background: linear-gradient(to bottom, transparent, rgba(51, 204, 102, 0.02), transparent);
-        }
-
-        .journey-content {
-            flex: 1;
-        }
-
-        .journey-visual {
-            flex: 1;
-            position: relative;
-            height: 600px;
-            perspective: 1500px;
-        }
-
-        /* Journey Specific Positions (4 Splash Screens) */
-        .journey .stack-item:nth-child(1) {
-            transform: translate3d(30px, -20px, 60px) rotateY(15deg);
-            z-index: 4;
-        }
-
-        .journey .stack-item:nth-child(2) {
-            transform: translate3d(10px, 15px, 40px) rotateY(8deg);
-            z-index: 3;
-        }
-
-        .journey .stack-item:nth-child(3) {
-            transform: translate3d(-20px, -30px, 20px) rotateY(0deg);
-            z-index: 2;
-        }
-
-        .journey .stack-item:nth-child(4) {
-            transform: translate3d(-50px, 40px, 0px) rotateY(-10deg);
-            z-index: 1;
-            opacity: 0.7;
-        }
-
-        /* Journey Hover: Sequential Fan-Out */
+        /* Staggered starts for the rotation */
+        .hero-visual:hover .stack-item:nth-child(1),
         .journey-visual:hover .stack-item:nth-child(1) {
-            transform: translate3d(300px, -40px, 50px) rotateY(20deg);
-            opacity: 1;
-            transition-delay: 0s;
+            animation-delay: 0s;
         }
 
+        .hero-visual:hover .stack-item:nth-child(2),
         .journey-visual:hover .stack-item:nth-child(2) {
-            transform: translate3d(100px, 40px, 50px) rotateY(10deg);
-            opacity: 1;
-            transition-delay: 0.1s;
+            animation-delay: 2s;
         }
 
+        .hero-visual:hover .stack-item:nth-child(3),
         .journey-visual:hover .stack-item:nth-child(3) {
-            transform: translate3d(-100px, -40px, 50px) rotateY(-10deg);
-            opacity: 1;
-            transition-delay: 0.2s;
+            animation-delay: 4s;
         }
 
+        .hero-visual:hover .stack-item:nth-child(4),
         .journey-visual:hover .stack-item:nth-child(4) {
-            transform: translate3d(-300px, 40px, 50px) rotateY(-20deg);
-            opacity: 1;
-            transition-delay: 0.3s;
+            animation-delay: 6s;
+        }
+
+        .hero-visual:hover .phone-stack,
+        .journey-visual:hover .phone-stack {
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
         }
 
         /* Detail Pop-Out */
