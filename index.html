@@ -4,49 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScreenBalance | Refined Focus for the Digital Age</title>
+    <title>ScreenBalance | Master Your Presence</title>
     <meta name="description"
-        content="Master your focus with ScreenBalance. Automatic awareness, premium themes, and deep focus tracking for iOS.">
+        content="Reclaim your focus with ScreenBalance. Automatic presence tracking, sub-second precision, and premium aesthetics for iOS.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg: #030303;
-            --card-bg: rgba(20, 20, 20, 0.6);
-            --accent: #33cc66;
-            --accent-glow: rgba(51, 204, 102, 0.4);
-            --text-main: #ffffff;
-            --text-dim: #949494;
+            --bg: #050505;
+            --accent: #00ff88;
+            --accent-dim: rgba(0, 255, 136, 0.1);
+            --text: #ffffff;
+            --text-dim: #888888;
             --glass: rgba(255, 255, 255, 0.03);
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-15px) rotate(1deg);
-            }
-
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-        }
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(51, 204, 102, 0.2);
-            }
-
-            70% {
-                box-shadow: 0 0 40px 10px rgba(51, 204, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(51, 204, 102, 0);
-            }
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card: #0c0c0c;
         }
 
         * {
@@ -58,160 +33,174 @@
 
         body {
             background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
             background-image:
-                radial-gradient(circle at 50% -20%, rgba(51, 204, 102, 0.15), transparent 60%),
-                radial-gradient(circle at -10% 50%, rgba(51, 204, 102, 0.05), transparent 40%);
+                radial-gradient(circle at 50% -10%, var(--accent-dim), transparent 70%),
+                radial-gradient(circle at 0% 50%, rgba(0, 255, 136, 0.05), transparent 40%);
         }
 
-        /* Universal Typography & Spacing */
-        .section-header {
-            margin-bottom: 60px;
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Outfit', sans-serif;
         }
 
-        .section-header h2 {
-            font-size: 3.5rem;
-            letter-spacing: -2px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
-        .section-header p {
+        /* Nav */
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
             font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-        }
-
-        /* Hero: The Product Showcase */
-        .hero {
-            padding: 100px 0;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #fff;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            min-height: 90vh;
+            gap: 10px;
         }
 
-        .hero-content {
-            flex: 1;
+        .logo-box {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-dim);
         }
 
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 160px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff 60%, rgba(255, 255, 255, 0.4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .cta {
+            background: var(--accent);
+            color: #000;
+            padding: 20px 50px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
+        }
+
+        .cta:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Hero Visual */
         .hero-visual {
-            flex: 1.2;
+            margin-top: 100px;
             position: relative;
-            height: 600px;
-            perspective: 1500px;
+            display: flex;
+            justify-content: center;
+            perspective: 2000px;
         }
 
-        /* Common Stack Styles */
-        .phone-stack {
+        .main-phone {
+            width: 320px;
+            border-radius: 54px;
+            border: 8px solid #1a1a1a;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 136, 0.1);
+            transform: rotateX(10deg);
+            transition: transform 0.8s;
+            background: #000;
             position: relative;
+            z-index: 2;
+        }
+
+        .hero-visual:hover .main-phone {
+            transform: rotateX(0deg) scale(1.05);
+        }
+
+        .float-elements {
+            position: absolute;
             width: 100%;
             height: 100%;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
+            pointer-events: none;
         }
 
-        .phone-stack.drift {
-            animation: hero-drift 12s ease-in-out infinite;
-        }
-
-        .stack-item {
+        .float-card {
             position: absolute;
-            width: 260px;
-            border-radius: 44px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            background: #000;
-            overflow: hidden;
-            will-change: transform, opacity;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: float 6s ease-in-out infinite;
         }
 
-        .stack-item img {
-            width: 100%;
-            display: block;
-            border-radius: 42px;
-        }
-
-        /* Carousel Solo Interaction: Automatic Rotation on Hover */
-        @keyframes carousel-wave {
-
-            0%,
-            100% {
-                transform: translate3d(0, 0, 0) scale(1) rotateY(0);
-                z-index: 10;
-                opacity: 0.6;
-                filter: blur(2px);
-            }
-
-            20%,
-            40% {
-                transform: translate3d(0, 0, 150px) scale(1.15) rotateY(0);
-                z-index: 100;
-                opacity: 1;
-                filter: blur(0);
-            }
-
-            60%,
-            80% {
-                transform: translate3d(0, 0, 0) scale(1) rotateY(0);
-                z-index: 10;
-                opacity: 0.6;
-                filter: blur(2px);
-            }
-        }
-
-        .hero-visual:hover .stack-item,
-        .journey-visual:hover .stack-item {
-            animation: carousel-wave 8s infinite ease-in-out;
-        }
-
-        /* Staggered starts for the rotation */
-        .hero-visual:hover .stack-item:nth-child(1),
-        .journey-visual:hover .stack-item:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(2),
-        .journey-visual:hover .stack-item:nth-child(2) {
-            animation-delay: 2s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(3),
-        .journey-visual:hover .stack-item:nth-child(3) {
-            animation-delay: 4s;
-        }
-
-        .hero-visual:hover .stack-item:nth-child(4),
-        .journey-visual:hover .stack-item:nth-child(4) {
-            animation-delay: 6s;
-        }
-
-        .hero-visual:hover .phone-stack,
-        .journey-visual:hover .phone-stack {
-            transform: scale(1.05);
-            transition: transform 0.5s ease;
-        }
-
-        /* Detail Pop-Out */
-        /* Detail Pop-Out Reset delay for instant interaction */
-        .stack-item:hover {
-            transform: translate3d(0, 0, 300px) scale(1.2) rotateY(0) !important;
-            z-index: 100 !important;
-            opacity: 1 !important;
-            filter: blur(0) !important;
-            box-shadow: 0 50px 100px rgba(51, 204, 102, 0.2) !important;
-            border-color: var(--accent) !important;
-            transition-delay: 0s !important;
-        }
-
-        @keyframes hero-drift {
+        @keyframes float {
 
             0%,
             100% {
@@ -219,412 +208,211 @@
             }
 
             50% {
-                transform: translateY(-30px);
+                transform: translateY(-20px);
             }
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 30px;
+        /* Bento Grid Features */
+        .grid-section {
+            padding: 100px 0;
         }
 
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, 400px);
+            gap: 24px;
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Header */
-        header {
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: opacity 0.3s;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo-ring {
-            width: 22px;
-            height: 22px;
-            border: 2.5px solid var(--accent);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            letter-spacing: 0.5px;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 120px 0 60px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 4.8rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-            line-height: 1.1;
-            letter-spacing: -3px;
-            background: linear-gradient(to bottom, #fff 40%, rgba(255, 255, 255, 0.5));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-dim);
-            font-size: 1.3rem;
-            max-width: 650px;
-            margin: 0 auto 48px;
-            font-weight: 400;
-        }
-
-        .cta-button {
-            background-color: var(--accent);
-            color: #000;
-            padding: 18px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.05rem;
-            display: inline-block;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(51, 204, 102, 0.25);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            background-color: #44ee88;
-            box-shadow: 0 20px 45px rgba(51, 204, 102, 0.4);
-        }
-
-        /* Showcase */
-        .showcase-wrapper {
+        .bento-card {
+            background: var(--card);
+            border-radius: 32px;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
             position: relative;
-            padding: 40px 0 100px;
+            padding: 40px;
+            transition: border-color 0.3s;
         }
 
-        .showcase {
+        .bento-card:hover {
+            border-color: rgba(0, 255, 136, 0.4);
+        }
+
+        .bento-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .bento-card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .card-large {
+            grid-column: span 8;
+        }
+
+        .card-small {
+            grid-column: span 4;
+        }
+
+        .card-image {
+            position: absolute;
+            bottom: -50px;
+            right: 40px;
+            width: 240px;
+            border-radius: 20px;
+            transform: rotate(-5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s;
+        }
+
+        .bento-card:hover .card-image {
+            transform: rotate(0deg) translateY(-20px);
+        }
+
+        /* Onboarding Gallery */
+        .onboarding-section {
+            padding: 150px 0;
+            background: #080808;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-intro h2 {
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .gallery {
             display: flex;
-            overflow-x: auto;
             gap: 30px;
-            scroll-snap-type: x mandatory;
+            overflow-x: scroll;
             padding: 40px 0;
             scrollbar-width: none;
         }
 
-        .showcase::-webkit-scrollbar {
-            display: none;
-        }
-
-        .screenshot {
-            flex: 0 0 280px;
-            scroll-snap-align: center;
+        .gallery-item {
+            flex: 0 0 300px;
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: var(--glass);
-            padding: 0;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            animation: float 6s ease-in-out infinite;
+            background: #000;
+            border: 1px solid var(--glass-border);
+            overflow: hidden;
+            transition: transform 0.4s;
         }
 
-        .screenshot:nth-child(even) {
-            animation-delay: -3s;
-        }
-
-        .screenshot:nth-child(3n) {
-            animation-delay: -1.5s;
-        }
-
-        .screenshot:hover {
-            transform: scale(1.05) translateY(-20px);
+        .gallery-item:hover {
+            transform: scale(1.05) translateY(-10px);
             border-color: var(--accent);
-            box-shadow: 0 40px 80px rgba(51, 204, 102, 0.2);
-            animation-play-state: paused;
         }
 
-        .screenshot img {
+        .gallery-item img {
             width: 100%;
             display: block;
-            border-radius: 38px;
-        }
-
-        /* Features */
-        .features {
-            padding: 100px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 50px;
-            border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-color: var(--accent-glow);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 18px;
-            display: block;
-        }
-
-        .feature-label {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            opacity: 0.8;
-        }
-
-        .feature-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .metric-insight {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .metric-insight span {
-            display: inline-block;
-            background: var(--accent-glow);
-            color: var(--accent);
-            font-size: 0.65rem;
-            font-weight: 900;
-            padding: 4px 12px;
-            border-radius: 6px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            border: 1px solid rgba(51, 204, 102, 0.2);
-        }
-
-        .metric-insight p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .scenario-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .scenario-box h5 {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent);
-            margin-bottom: 5px;
-        }
-
-        .scenario-box p {
-            font-size: 0.8rem !important;
-            font-style: normal !important;
-            color: #ccc !important;
-            line-height: 1.4 !important;
         }
 
         /* Pricing */
         .pricing {
-            padding: 120px 0;
+            padding: 150px 0;
             text-align: center;
-        }
-
-        .pricing h2 {
-            font-size: 3rem;
-            margin-bottom: 60px;
-            letter-spacing: -1px;
         }
 
         .pricing-grid {
             display: flex;
             justify-content: center;
             gap: 30px;
-            flex-wrap: wrap;
+            margin-top: 60px;
         }
 
         .price-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
+            background: var(--card);
             padding: 60px 40px;
             border-radius: 40px;
-            width: 360px;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s;
+            width: 380px;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.4s;
         }
 
-        .price-card:hover {
-            transform: scale(1.02);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .price-card.pro {
-            border: 1px solid var(--accent);
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(30, 30, 30, 0.8) 100%);
-            box-shadow: 0 20px 50px rgba(51, 204, 102, 0.1);
-            animation: pulse-glow 3s infinite;
-        }
-
-        .price-badge {
-            background: var(--accent);
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: 900;
-            padding: 6px 16px;
-            border-radius: 40px;
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            letter-spacing: 1px;
-        }
-
-        .price-card h4 {
-            font-size: 1rem;
-            color: var(--text-dim);
-            margin-bottom: 12px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        .price-card.featured {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px var(--accent-dim);
+            transform: scale(1.05);
         }
 
         .price-value {
             font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 8px;
-            line-height: 1;
-        }
-
-        .price-strike {
-            text-decoration: line-through;
-            color: var(--text-dim);
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            display: block;
-            opacity: 0.5;
+            margin: 20px 0;
         }
 
         .price-features {
             text-align: left;
-            margin: 40px 0;
             list-style: none;
+            margin: 40px 0;
         }
 
         .price-features li {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             color: var(--text-dim);
-            font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
         .price-features li::before {
-            content: "✦";
+            content: "✓";
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 800;
         }
 
         /* Footer */
         footer {
-            padding: 100px 0 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 100px 0;
+            border-top: 1px solid var(--glass-border);
             text-align: center;
+            color: var(--text-dim);
         }
 
         .footer-links {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .footer-links a {
             color: var(--text-dim);
             text-decoration: none;
             margin: 0 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
             color: #fff;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 4rem;
+            }
+
+            .bento-grid {
+                grid-template-rows: auto;
+            }
+
+            .card-large,
+            .card-small {
+                grid-column: span 12;
+                height: 500px;
             }
 
             .pricing-grid {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            .price-card {
-                width: 100%;
-                max-width: 400px;
             }
         }
     </style>
@@ -632,147 +420,117 @@
 
 <body>
     <div class="container">
-        <header>
+        <nav>
             <a href="index.html" class="logo">
-                <span class="logo-ring"></span>
+                <div class="logo-box"></div>
                 SCREENBALANCE
             </a>
-            <nav>
+            <div class="nav-links">
                 <a href="#features">Features</a>
+                <a href="#onboarding">Journey</a>
                 <a href="#pricing">Pricing</a>
                 <a href="support.html">Support</a>
                 <a href="privacy.html">Privacy</a>
-            </nav>
-        </header>
-
-        <section class="hero reveal">
-            <div class="hero-content">
-                <span class="feature-label">STABLE RELEASE V1.0</span>
-                <h1>Stay present.<br>Life is happening.</h1>
-                <p>Automatically track your focus and presence. Reclaim your attention with the world's most premium
-                    mindfulness engine for iOS.</p>
-                <div style="display: flex; gap: 20px; align-items: center;">
-                    <a href="#" class="cta-button">Download Now</a>
-                </div>
             </div>
+        </nav>
+
+        <section class="hero">
+            <span class="badge">V1.0.0 STABLE RELEASE</span>
+            <h1>Stay present.<br>Life is happening.</h1>
+            <p>The world's most premium focus engine for iOS. Automatic awareness, strictly local, infinitely quiet.</p>
+            <a href="#" class="cta">Download for iOS</a>
+
             <div class="hero-visual">
-                <div class="phone-stack drift">
-                    <div class="stack-item"><img src="screen1.png" alt="Focus Dashboard"></div>
-                    <div class="stack-item"><img src="screen2.png" alt="Activity Details"></div>
-                    <div class="stack-item"><img src="screen3.png" alt="Premium Themes"></div>
-                    <div class="stack-item"><img src="screen4.png" alt="Growth Goals"></div>
+                <img src="screen1.png" alt="Dashboard" class="main-phone">
+                <div class="float-elements">
+                    <div class="float-card" style="top: 10%; left: 15%; animation-delay: 0s;">
+                        <span style="color: var(--accent); font-weight: 800;">0.1s PRECISION</span>
+                        <p style="font-size: 0.8rem; opacity: 0.6;">Math you can trust.</p>
+                    </div>
+                    <div class="float-card" style="bottom: 20%; right: 10%; animation-delay: -3s;">
+                        <span style="color: #60a5fa; font-weight: 800;">LOCAL ONLY</span>
+                        <p style="font-size: 0.8rem; opacity: 0.6;">Zero servers. Zero risk.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="journey reveal">
-            <div class="journey-content">
-                <div class="section-header">
-                    <span class="feature-label" style="color: #ffd700;">Chapter 1</span>
-                    <h2 style="font-size: 3rem;">Philosophy<br>by Design.</h2>
-                    <p>ScreenBalance respects your intelligence. Our onboarding isn't just a welcome—it's a transparency
-                        audit that establishes trust from the first second.</p>
+        <section id="features" class="grid-section">
+            <div class="bento-grid">
+                <div class="bento-card card-large">
+                    <span class="badge" style="margin-bottom: 10px;">CORE METRIC</span>
+                    <h3>Truthful Presence</h3>
+                    <p style="max-width: 400px;">Powered by a sub-second engine that calculates your presence score with
+                        0.1s precision. No rounding up. Just raw mathematical honesty about your attention.</p>
+                    <img src="screen1.png" alt="Detail" class="card-image">
                 </div>
-                <div class="scenario-box" style="border-left-color: #ffd700;">
-                    <h5 style="color: #ffd700;">The Zero-Cloud Promise</h5>
-                    <p>No phone numbers. No accounts. No servers. We built an app that starts with a handshake, not a
-                        data harvest.</p>
+                <div class="bento-card card-small">
+                    <span class="badge" style="margin-bottom: 10px;">HABITS</span>
+                    <h3>60s Reset</h3>
+                    <p>The engine identifies rapid "shuffles" and requires a full 60.1s break to validate a new focus
+                        session.</p>
                 </div>
-            </div>
-            <div class="journey-visual">
-                <div class="phone-stack drift">
-                    <div class="stack-item"><img src="splash1.png" alt="Welcome Journey"></div>
-                    <div class="stack-item"><img src="splash2.png" alt="Privacy First"></div>
-                    <div class="stack-item"><img src="splash3.png" alt="The 1-Minute Rule"></div>
-                    <div class="stack-item"><img src="splash4.png" alt="Premium Upgrade"></div>
+                <div class="bento-card card-small">
+                    <span class="badge" style="margin-bottom: 10px;">AUDIT</span>
+                    <h3>Zombie Healing</h3>
+                    <p>App-kills don't break your score. Our heartbeat monitor detects the 'zombie' session on relaunch
+                        and auto-repairs your timeline.</p>
                 </div>
-            </div>
-        </section>
-
-        <section id="features" class="features reveal">
-            <div class="feature-card">
-                <span class="feature-icon">⭕</span>
-                <span class="feature-label">CORE METRIC</span>
-                <h3>Truthful Presence</h3>
-                <p>The world's most precise measure of digital silence. Powered by a <b>sub-second engine</b> that
-                    calculates your score with 0.1s precision, ensuring every moment of focus is captured.</p>
-                <div class="scenario-box">
-                    <h5>Technical Precision</h5>
-                    <p>ScreenBalance doesn't round up. If you spend 58.2s away from glass, you get <b>exactly 58.2s</b>
-                        added to your score. No guesswork, just raw data.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🛡️</span>
-                <span class="feature-label">DATA INTEGRITY</span>
-                <h3>The Honest Audit</h3>
-                <p>Standard trackers are easy to cheat. ScreenBalance uses a <b>Retrospective Audit</b> system to detect
-                    app-kills and data gaps, marking them as 'INTERRUPTED' to maintain the integrity of your scoreboard.
-                </p>
-                <div class="scenario-box">
-                    <h5>Zombie Healing</h5>
-                    <p>Swipe the app away while the screen is on? Our heartbeat monitor detects the 'zombie' session on
-                        relaunch and <b>auto-heals</b> your timeline to protect your score from penalties.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">⚡</span>
-                <span class="feature-label">HABIT TRACKING</span>
-                <h3>RE-CHECK Math</h3>
-                <p>Identify the involuntary "shuffle." We group rapid, fragmented check-ins into RE-CHECK incidents,
-                    using a strictly enforced <b>60-Second Reset Rule</b> to distinguish habitual re-entry from
-                    intentional use.</p>
-                <div class="scenario-box">
-                    <h5>The 60s Threshold</h5>
-                    <p>Unlock 3 times in quick succession? That's <b>1 RE-CHECK</b>. Need a reset? Stay locked for
-                        60.1s—the engine validates your break and resets your distraction state.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">⚖️</span>
-                <span class="feature-label">TRANSPARENCY</span>
-                <h3>Technical Audit Mode</h3>
-                <p>Trust is built on evidence. Every entry in your Activity Log provides a full <b>Logical Reason</b>
-                    and mathematical breakdown, showing the exact rule applied to categorize your behavior.</p>
-                <div class="metric-insight">
-                    <span>Evidence-Based</span>
-                    <p>Sub-second timestamps (HH:MM:SS) and raw gap calculations are available for every focused second.
-                    </p>
+                <div class="bento-card card-large">
+                    <span class="badge" style="margin-bottom: 10px;">LUXURY</span>
+                    <h3>Premium Themes</h3>
+                    <p style="max-width: 400px;">From Classic Zen to Midnight Emerald. Every pixel is crafted to look
+                        stunning on OLED displays, turning data into digital art.</p>
+                    <img src="screen3.png" alt="Themes" class="card-image">
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="pricing reveal">
+        <section id="onboarding" class="onboarding-section">
+            <div class="section-intro">
+                <span class="badge"
+                    style="background: rgba(255,215,0,0.1); color: #ffd700; border-color: rgba(255,215,0,0.2);">PHILOSOPHY</span>
+                <h2>The First Interaction</h2>
+                <p style="margin: 0 auto; max-width: 600px;">Onboarding isn't just a guide—it's establishing a core
+                    baseline of trust. Explore the journey from silence to score.</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item"><img src="splash1.png" alt="Welcome"></div>
+                <div class="gallery-item"><img src="splash2.png" alt="Privacy"></div>
+                <div class="gallery-item"><img src="splash3.png" alt="The Rule"></div>
+                <div class="gallery-item"><img src="splash4.png" alt="Upgrade"></div>
+                <div class="gallery-item"><img src="screen2.png" alt="History"></div>
+                <div class="gallery-item"><img src="screen4.png" alt="Themes"></div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <span class="badge">ACCESS</span>
             <h2>Choose Your Path</h2>
             <div class="pricing-grid">
                 <div class="price-card">
-                    <h4>CORE</h4>
-                    <div class="price-value">Free</div>
+                    <span style="font-weight: 800; letter-spacing: 2px; color: var(--text-dim);">CORE</span>
+                    <div class="price-value">FREE</div>
                     <ul class="price-features">
                         <li>Automatic Presence Tracking</li>
-                        <li>7-Day History</li>
+                        <li>7-Day Local History</li>
                         <li>Classic Zen Theme</li>
-                        <li>Presence Score Insights</li>
+                        <li>Logical Reason Audits</li>
                     </ul>
-                    <a href="#"
-                        style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 0.8rem;">GET
-                        STARTED</a>
+                    <a href="#" style="color: var(--accent); font-weight: 800; text-decoration: none;">START FOCUSED</a>
                 </div>
-                <div class="price-card pro">
-                    <div class="price-badge">EARLY BIRD</div>
-                    <h4>PRO</h4>
+                <div class="price-card featured">
+                    <span style="font-weight: 800; letter-spacing: 2px; color: var(--accent);">LIFETIME PRO</span>
                     <div class="price-value">$0.99</div>
-                    <span class="price-strike">$9.99</span>
-                    <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: -20px; margin-bottom: 20px;">
-                        LIFETIME ACCESS</p>
+                    <p style="color: var(--text-dim); text-decoration: line-through; margin-top: -15px;">$9.99</p>
                     <ul class="price-features">
-                        <li>Full 30-Day History</li>
+                        <li>Full 30-Day Extrapolated History</li>
+                        <li>Exclusive Luxury Themes</li>
                         <li>Custom Presence Goals</li>
                         <li>Premium Share Cards</li>
-                        <li>Detailed Activity Log</li>
-                        <li>Exclusive Luxury Themes</li>
+                        <li>Zero-Data Priority Support</li>
                     </ul>
-                    <a href="#" class="cta-button" style="padding: 12px 30px; font-size: 0.8rem;">UPGRADE NOW</a>
+                    <a href="#" class="cta" style="padding: 15px 40px; width: 100%;">UNLOCK EVERYTHING</a>
                 </div>
             </div>
         </section>
@@ -781,28 +539,12 @@
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="support.html">Support</a>
-                <a href="privacy.html">Privacy Policy</a>
+                <a href="privacy.html">Privacy</a>
                 <a href="https://github.com/deepak-kumar/screenbalance-distribution">Public Source</a>
             </div>
-            <p>&copy; 2025 ScreenBalance. Built for a more intentional generation.</p>
+            <p>&copy; 2025 ScreenBalance. Built for the Intentional Generation.</p>
         </footer>
     </div>
-
-    <script>
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
 </body>
 
 </html>
