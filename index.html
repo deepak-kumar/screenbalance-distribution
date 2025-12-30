@@ -186,76 +186,74 @@
             opacity: 0.2;
         }
 
-        /* Auto-Floating Animation */
+        /* Decoupled Drift Animation - Applied only when NOT hovering */
         @keyframes hero-drift {
 
             0%,
             100% {
-                transform: translateY(0) rotate(0);
+                transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-30px) rotate(1deg);
+                transform: translateY(-30px);
             }
         }
 
-        .hero-visual .phone-stack {
+        .phone-stack {
             animation: hero-drift 10s ease-in-out infinite;
+            will-change: transform;
         }
 
-        /* Hover Expansion - Total Visibility Fan Out */
+        /* Stop the drift on hover to provide a stable interaction base */
+        .hero-visual:hover .phone-stack {
+            animation-play-state: paused;
+        }
+
+        /* Hover Expansion - Optimized spread with stable coordinates */
         .hero-visual:hover .stack-item {
-            opacity: 0.4;
-            filter: blur(2px) grayscale(0.5);
+            opacity: 0.5;
+            filter: blur(2px);
         }
 
         .hero-visual:hover .stack-item:nth-child(1) {
-            transform: translate3d(-460px, -60px, 50px) rotateY(-20deg) scale(0.9);
-            z-index: 10;
+            transform: translate3d(-460px, -60px, 0) rotateY(-15deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(2) {
-            transform: translate3d(-330px, 40px, 50px) rotateY(-12deg) scale(0.9);
-            z-index: 11;
+            transform: translate3d(-330px, 40px, 0) rotateY(-8deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(3) {
-            transform: translate3d(-200px, -40px, 50px) rotateY(-5deg) scale(0.9);
-            z-index: 12;
+            transform: translate3d(-200px, -40px, 0) rotateY(-4deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(4) {
-            transform: translate3d(-70px, 60px, 50px) rotateY(5deg) scale(0.9);
-            z-index: 13;
+            transform: translate3d(-70px, 60px, 0) rotateY(0deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(5) {
-            transform: translate3d(60px, -60px, 50px) rotateY(12deg) scale(0.9);
-            z-index: 14;
+            transform: translate3d(60px, -60px, 0) rotateY(4deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(6) {
-            transform: translate3d(190px, 40px, 50px) rotateY(20deg) scale(0.9);
-            z-index: 15;
+            transform: translate3d(190px, 40px, 0) rotateY(8deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(7) {
-            transform: translate3d(320px, -40px, 50px) rotateY(28deg) scale(0.9);
-            z-index: 16;
+            transform: translate3d(320px, -40px, 0) rotateY(15deg);
         }
 
         .hero-visual:hover .stack-item:nth-child(8) {
-            transform: translate3d(450px, 60px, 50px) rotateY(35deg) scale(0.9);
-            z-index: 17;
+            transform: translate3d(450px, 60px, 0) rotateY(20deg);
         }
 
-        /* Pop-To-Front Interaction: Selecting a specific screen */
+        /* Interaction: Choosing a screen - Rock solid stability */
         .stack-item:hover {
-            transform: translate3d(0, 0, 300px) rotateY(0) scale(1.2) !important;
+            transform: translate3d(0, 0, 200px) scale(1.15) !important;
             z-index: 100 !important;
             opacity: 1 !important;
-            filter: blur(0) grayscale(0) !important;
-            box-shadow: 0 60px 120px rgba(51, 204, 102, 0.3) !important;
+            filter: blur(0) !important;
+            box-shadow: 0 60px 120px rgba(51, 204, 102, 0.4) !important;
             border-color: var(--accent) !important;
         }
 
