@@ -67,6 +67,117 @@
                 radial-gradient(circle at -10% 50%, rgba(51, 204, 102, 0.05), transparent 40%);
         }
 
+        /* Journey Stack */
+        .journey-section {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .journey-content {
+            flex: 1;
+        }
+
+        .journey-content h2 {
+            font-size: 3.5rem;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .phone-stack {
+            position: relative;
+            flex: 1;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stack-item {
+            position: absolute;
+            width: 260px;
+            border-radius: 40px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            filter: grayscale(0.2);
+        }
+
+        .stack-item img {
+            width: 100%;
+            border-radius: 38px;
+            display: block;
+        }
+
+        .stack-item:nth-child(1) {
+            transform: rotate(-10deg) translateX(-80px) translateZ(0);
+            z-index: 4;
+        }
+
+        .stack-item:nth-child(2) {
+            transform: rotate(-5deg) translateX(-40px) translateZ(0);
+            z-index: 3;
+            opacity: 0.8;
+        }
+
+        .stack-item:nth-child(3) {
+            transform: rotate(5deg) translateX(40px) translateZ(0);
+            z-index: 2;
+            opacity: 0.6;
+        }
+
+        .stack-item:nth-child(4) {
+            transform: rotate(10deg) translateX(80px) translateZ(0);
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .phone-stack:hover .stack-item:nth-child(1) {
+            transform: rotate(-15deg) translateX(-240px) scale(1.05);
+            filter: grayscale(0);
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .phone-stack:hover .stack-item:nth-child(2) {
+            transform: rotate(-5deg) translateX(-80px) scale(1.05);
+            filter: grayscale(0);
+            opacity: 1;
+            z-index: 9;
+        }
+
+        .phone-stack:hover .stack-item:nth-child(3) {
+            transform: rotate(5deg) translateX(80px) scale(1.05);
+            filter: grayscale(0);
+            opacity: 1;
+            z-index: 8;
+        }
+
+        .phone-stack:hover .stack-item:nth-child(4) {
+            transform: rotate(15deg) translateX(240px) scale(1.05);
+            filter: grayscale(0);
+            opacity: 1;
+            z-index: 7;
+        }
+
+        .journey-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 50px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -501,6 +612,27 @@
             <div class="screenshot"><img src="screen2.png" alt="ScreenBalance Pattern"></div>
             <div class="screenshot"><img src="screen3.png" alt="ScreenBalance Themes"></div>
             <div class="screenshot"><img src="screen4.png" alt="ScreenBalance Goal"></div>
+        </section>
+
+        <section class="journey-section reveal">
+            <div class="journey-content">
+                <span class="journey-badge">The First 60 Seconds</span>
+                <h2>Premium by Design</h2>
+                <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px;">From the moment you launch,
+                    ScreenBalance respects your intelligence. Our diagnostic-grade onboarding isn't just a welcome—it's
+                    a transparency audit.</p>
+                <div class="scenario-box" style="border-left-color: #ffd700;">
+                    <h5 style="color: #ffd700;">Zero Friction</h5>
+                    <p>No account setup. No cloud syncing. No personal questions. Just a fluid introduction to a more
+                        intentional way of living.</p>
+                </div>
+            </div>
+            <div class="phone-stack">
+                <div class="stack-item"><img src="splash1.png" alt="Onboarding 1"></div>
+                <div class="stack-item"><img src="splash2.png" alt="Onboarding 2"></div>
+                <div class="stack-item"><img src="splash3.png" alt="Onboarding 3"></div>
+                <div class="stack-item"><img src="splash4.png" alt="Onboarding 4"></div>
+            </div>
         </section>
 
         <section id="features" class="features reveal">
