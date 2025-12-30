@@ -173,24 +173,29 @@
             opacity: 0.7;
         }
 
+        /* Hero Hover: Sequential Fan-Out */
         .hero-visual:hover .stack-item:nth-child(1) {
             transform: translate3d(-300px, -40px, 50px) rotateY(-20deg);
             opacity: 1;
+            transition-delay: 0s;
         }
 
         .hero-visual:hover .stack-item:nth-child(2) {
             transform: translate3d(-100px, 40px, 50px) rotateY(-10deg);
             opacity: 1;
+            transition-delay: 0.1s;
         }
 
         .hero-visual:hover .stack-item:nth-child(3) {
             transform: translate3d(100px, -40px, 50px) rotateY(10deg);
             opacity: 1;
+            transition-delay: 0.2s;
         }
 
         .hero-visual:hover .stack-item:nth-child(4) {
             transform: translate3d(300px, 40px, 50px) rotateY(20deg);
             opacity: 1;
+            transition-delay: 0.3s;
         }
 
         /* Journey: The Philosophical Chapter */
@@ -236,27 +241,33 @@
             opacity: 0.7;
         }
 
+        /* Journey Hover: Sequential Fan-Out */
         .journey-visual:hover .stack-item:nth-child(1) {
             transform: translate3d(300px, -40px, 50px) rotateY(20deg);
             opacity: 1;
+            transition-delay: 0s;
         }
 
         .journey-visual:hover .stack-item:nth-child(2) {
             transform: translate3d(100px, 40px, 50px) rotateY(10deg);
             opacity: 1;
+            transition-delay: 0.1s;
         }
 
         .journey-visual:hover .stack-item:nth-child(3) {
             transform: translate3d(-100px, -40px, 50px) rotateY(-10deg);
             opacity: 1;
+            transition-delay: 0.2s;
         }
 
         .journey-visual:hover .stack-item:nth-child(4) {
             transform: translate3d(-300px, 40px, 50px) rotateY(-20deg);
             opacity: 1;
+            transition-delay: 0.3s;
         }
 
         /* Detail Pop-Out */
+        /* Detail Pop-Out Reset delay for instant interaction */
         .stack-item:hover {
             transform: translate3d(0, 0, 300px) scale(1.2) rotateY(0) !important;
             z-index: 100 !important;
@@ -264,6 +275,7 @@
             filter: blur(0) !important;
             box-shadow: 0 50px 100px rgba(51, 204, 102, 0.2) !important;
             border-color: var(--accent) !important;
+            transition-delay: 0s !important;
         }
 
         @keyframes hero-drift {
