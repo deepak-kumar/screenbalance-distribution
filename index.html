@@ -67,115 +67,144 @@
                 radial-gradient(circle at -10% 50%, rgba(51, 204, 102, 0.05), transparent 40%);
         }
 
-        /* Journey Stack */
-        .journey-section {
-            padding: 100px 0;
+        /* Hero Layout */
+        .hero {
+            padding: 80px 0 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 60px;
+            gap: 40px;
+            min-height: 85vh;
         }
 
-        .journey-content {
-            flex: 1;
+        .hero-content {
+            flex: 1.2;
+            text-align: left;
         }
 
-        .journey-content h2 {
-            font-size: 3.5rem;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
+        .hero h1 {
+            font-size: 4.8rem;
             font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.05;
+            letter-spacing: -4px;
+            background: linear-gradient(to bottom, #fff 60%, rgba(255, 255, 255, 0.4));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            max-width: 500px;
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        /* Hero Phone Stack */
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
         }
 
         .phone-stack {
             position: relative;
-            flex: 1;
-            height: 600px;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transform-style: preserve-3d;
         }
 
         .stack-item {
             position: absolute;
-            width: 260px;
-            border-radius: 40px;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+            width: 280px;
+            border-radius: 44px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
             cursor: pointer;
-            filter: grayscale(0.2);
+            background: #000;
+            overflow: hidden;
         }
 
         .stack-item img {
             width: 100%;
-            border-radius: 38px;
             display: block;
+            border-radius: 42px;
         }
 
+        /* Default Drifting Positions */
         .stack-item:nth-child(1) {
-            transform: rotate(-10deg) translateX(-80px) translateZ(0);
+            transform: translate3d(-30px, -20px, 40px) rotateY(-15deg) rotateX(5deg);
             z-index: 4;
         }
 
         .stack-item:nth-child(2) {
-            transform: rotate(-5deg) translateX(-40px) translateZ(0);
+            transform: translate3d(20px, 10px, 20px) rotateY(10deg) rotateX(-5deg);
             z-index: 3;
             opacity: 0.8;
         }
 
         .stack-item:nth-child(3) {
-            transform: rotate(5deg) translateX(40px) translateZ(0);
+            transform: translate3d(-60px, 40px, 0) rotateY(-5deg);
             z-index: 2;
             opacity: 0.6;
         }
 
         .stack-item:nth-child(4) {
-            transform: rotate(10deg) translateX(80px) translateZ(0);
+            transform: translate3d(50px, -60px, -20px) rotateY(15deg);
             z-index: 1;
             opacity: 0.4;
         }
 
-        .phone-stack:hover .stack-item:nth-child(1) {
-            transform: rotate(-15deg) translateX(-240px) scale(1.05);
-            filter: grayscale(0);
-            opacity: 1;
+        /* Auto-Floating Animation */
+        @keyframes hero-drift {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+        }
+
+        .hero-visual .phone-stack {
+            animation: hero-drift 8s ease-in-out infinite;
+        }
+
+        /* Hover Expansion */
+        .hero-visual:hover .stack-item:nth-child(1) {
+            transform: translate3d(-200px, -20px, 100px) rotateY(-20deg) scale(1.05);
             z-index: 10;
+            opacity: 1;
         }
 
-        .phone-stack:hover .stack-item:nth-child(2) {
-            transform: rotate(-5deg) translateX(-80px) scale(1.05);
-            filter: grayscale(0);
-            opacity: 1;
+        .hero-visual:hover .stack-item:nth-child(2) {
+            transform: translate3d(-60px, 20px, 80px) rotateY(-10deg) scale(1.05);
             z-index: 9;
+            opacity: 1;
         }
 
-        .phone-stack:hover .stack-item:nth-child(3) {
-            transform: rotate(5deg) translateX(80px) scale(1.05);
-            filter: grayscale(0);
-            opacity: 1;
+        .hero-visual:hover .stack-item:nth-child(3) {
+            transform: translate3d(80px, -20px, 60px) rotateY(10deg) scale(1.05);
             z-index: 8;
-        }
-
-        .phone-stack:hover .stack-item:nth-child(4) {
-            transform: rotate(15deg) translateX(240px) scale(1.05);
-            filter: grayscale(0);
             opacity: 1;
-            z-index: 7;
         }
 
-        .journey-badge {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
-            color: #ffd700;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 6px 14px;
-            border-radius: 50px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+        .hero-visual:hover .stack-item:nth-child(4) {
+            transform: translate3d(220px, 30px, 40px) rotateY(20deg) scale(1.05);
+            z-index: 7;
+            opacity: 1;
         }
 
         .container {
@@ -601,37 +630,23 @@
         </header>
 
         <section class="hero reveal">
-            <h1>Stay present.<br>Life is happening.</h1>
-            <p>Automatically track your focus and presence. Reclaim your attention with the world's most premium
-                mindfulness engine for iOS.</p>
-            <a href="#" class="cta-button">Download on App Store</a>
-        </section>
-
-        <section class="showcase reveal">
-            <div class="screenshot"><img src="screen1.png" alt="ScreenBalance Score"></div>
-            <div class="screenshot"><img src="screen2.png" alt="ScreenBalance Pattern"></div>
-            <div class="screenshot"><img src="screen3.png" alt="ScreenBalance Themes"></div>
-            <div class="screenshot"><img src="screen4.png" alt="ScreenBalance Goal"></div>
-        </section>
-
-        <section class="journey-section reveal">
-            <div class="journey-content">
-                <span class="journey-badge">The First 60 Seconds</span>
-                <h2>Premium by Design</h2>
-                <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px;">From the moment you launch,
-                    ScreenBalance respects your intelligence. Our diagnostic-grade onboarding isn't just a welcome—it's
-                    a transparency audit.</p>
-                <div class="scenario-box" style="border-left-color: #ffd700;">
-                    <h5 style="color: #ffd700;">Zero Friction</h5>
-                    <p>No account setup. No cloud syncing. No personal questions. Just a fluid introduction to a more
-                        intentional way of living.</p>
+            <div class="hero-content">
+                <h1>Stay present.<br>Life is happening.</h1>
+                <p>Automatically track your focus and presence. Reclaim your attention with the world's most premium
+                    mindfulness engine for iOS.</p>
+                <div style="display: flex; gap: 20px; align-items: center;">
+                    <a href="#" class="cta-button">Download Now</a>
+                    <span style="font-size: 0.7rem; font-weight: 800; color: var(--accent); letter-spacing: 2px;">V1.0.0
+                        STABLE</span>
                 </div>
             </div>
-            <div class="phone-stack">
-                <div class="stack-item"><img src="splash1.png" alt="Onboarding 1"></div>
-                <div class="stack-item"><img src="splash2.png" alt="Onboarding 2"></div>
-                <div class="stack-item"><img src="splash3.png" alt="Onboarding 3"></div>
-                <div class="stack-item"><img src="splash4.png" alt="Onboarding 4"></div>
+            <div class="hero-visual">
+                <div class="phone-stack">
+                    <div class="stack-item"><img src="splash1.png" alt="Splash 1"></div>
+                    <div class="stack-item"><img src="splash2.png" alt="Splash 2"></div>
+                    <div class="stack-item"><img src="splash3.png" alt="Splash 3"></div>
+                    <div class="stack-item"><img src="splash4.png" alt="Splash 4"></div>
+                </div>
             </div>
         </section>
 
