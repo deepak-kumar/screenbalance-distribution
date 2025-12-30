@@ -14,14 +14,13 @@
         rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
+            --bg: #030303;
             --accent: #00ff88;
             --accent-dim: rgba(0, 255, 136, 0.1);
             --text: #ffffff;
-            --text-dim: #888888;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --card: #0c0c0c;
+            --text-dim: #949494;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -37,9 +36,6 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            background-image:
-                radial-gradient(circle at 50% -10%, var(--accent-dim), transparent 70%),
-                radial-gradient(circle at 0% 50%, rgba(0, 255, 136, 0.05), transparent 40%);
         }
 
         h1,
@@ -61,29 +57,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
+            position: absolute;
+            width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-decoration: none;
             color: #fff;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo-box {
+        .logo-ring {
             width: 20px;
             height: 20px;
             border: 2px solid var(--accent);
-            border-radius: 4px;
+            border-radius: 50%;
             box-shadow: 0 0 10px var(--accent-dim);
         }
 
@@ -91,9 +87,11 @@
             color: var(--text-dim);
             text-decoration: none;
             margin-left: 30px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
@@ -102,30 +100,21 @@
 
         /* Hero */
         .hero {
-            padding: 100px 0 160px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            position: relative;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding-top: 100px;
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: 5rem;
             font-weight: 800;
-            line-height: 1;
+            line-height: 0.95;
             letter-spacing: -4px;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             background: linear-gradient(to bottom, #fff 60%, rgba(255, 255, 255, 0.4));
             -webkit-background-clip: text;
             background-clip: text;
@@ -133,249 +122,155 @@
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-dim);
             max-width: 600px;
-            margin: 0 auto 50px;
+            margin-bottom: 40px;
         }
 
-        .cta {
+        .cta-primary {
             background: var(--accent);
             color: #000;
-            padding: 20px 50px;
-            border-radius: 12px;
+            padding: 20px 48px;
+            border-radius: 100px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.1rem;
-            display: inline-block;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1rem;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
         }
 
-        .cta:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.3);
+        .cta-primary:hover {
+            transform: scale(1.05) translateY(-5px);
         }
 
-        /* Hero Visual */
-        .hero-visual {
-            margin-top: 100px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            perspective: 2000px;
+        /* Section Layout */
+        .section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        .main-phone {
-            width: 320px;
-            border-radius: 54px;
-            border: 8px solid #1a1a1a;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 255, 136, 0.1);
-            transform: rotateX(10deg);
-            transition: transform 0.8s;
-            background: #000;
-            position: relative;
-            z-index: 2;
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .hero-visual:hover .main-phone {
-            transform: rotateX(0deg) scale(1.05);
-        }
-
-        .float-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .float-card {
-            position: absolute;
-            background: rgba(20, 20, 20, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        /* Bento Grid Features */
-        .grid-section {
-            padding: 100px 0;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(2, 400px);
-            gap: 24px;
-        }
-
-        .bento-card {
-            background: var(--card);
-            border-radius: 32px;
-            border: 1px solid var(--glass-border);
-            overflow: hidden;
-            position: relative;
-            padding: 40px;
-            transition: border-color 0.3s;
-        }
-
-        .bento-card:hover {
-            border-color: rgba(0, 255, 136, 0.4);
-        }
-
-        .bento-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .bento-card p {
-            color: var(--text-dim);
-            font-size: 1rem;
-        }
-
-        .card-large {
-            grid-column: span 8;
-        }
-
-        .card-small {
-            grid-column: span 4;
-        }
-
-        .card-image {
-            position: absolute;
-            bottom: -50px;
-            right: 40px;
-            width: 240px;
-            border-radius: 20px;
-            transform: rotate(-5deg);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            transition: transform 0.5s;
-        }
-
-        .bento-card:hover .card-image {
-            transform: rotate(0deg) translateY(-20px);
-        }
-
-        /* Onboarding Gallery */
-        .onboarding-section {
-            padding: 150px 0;
-            background: #080808;
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .section-intro {
-            text-align: center;
+        .section-header {
+            max-width: 600px;
             margin-bottom: 80px;
         }
 
-        .section-intro h2 {
-            font-size: 3.5rem;
+        .section-header span {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 4rem;
+            line-height: 1;
             letter-spacing: -2px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .gallery {
-            display: flex;
-            gap: 30px;
-            overflow-x: scroll;
-            padding: 40px 0;
-            scrollbar-width: none;
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
         }
 
-        .gallery-item {
-            flex: 0 0 300px;
-            border-radius: 40px;
+        /* Image Display */
+        .display-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .phone-display {
             background: #000;
-            border: 1px solid var(--glass-border);
+            border-radius: 44px;
+            border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform 0.4s;
+            transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1), border-color 0.3s;
+            position: relative;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05) translateY(-10px);
+        .phone-display:hover {
+            transform: translateY(-20px) scale(1.02);
             border-color: var(--accent);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
         }
 
-        .gallery-item img {
+        .phone-display img {
             width: 100%;
             display: block;
         }
 
-        /* Pricing */
-        .pricing {
-            padding: 150px 0;
-            text-align: center;
-        }
-
-        .pricing-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        /* Features Styling */
+        .features-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             margin-top: 60px;
         }
 
-        .price-card {
-            background: var(--card);
-            padding: 60px 40px;
-            border-radius: 40px;
-            width: 380px;
-            border: 1px solid var(--glass-border);
-            transition: transform 0.4s;
+        .feature-item {
+            background: var(--card-bg);
+            padding: 48px;
+            border-radius: 32px;
+            border: 1px solid var(--border);
+            transition: background 0.3s;
         }
 
-        .price-card.featured {
-            border-color: var(--accent);
-            box-shadow: 0 0 40px var(--accent-dim);
-            transform: scale(1.05);
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .price-value {
-            font-size: 4rem;
-            font-weight: 800;
-            margin: 20px 0;
+        .feature-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
         }
 
-        .price-features {
-            text-align: left;
-            list-style: none;
-            margin: 40px 0;
-        }
-
-        .price-features li {
-            margin-bottom: 15px;
+        .feature-item p {
             color: var(--text-dim);
+        }
+
+        /* Pricing Card */
+        .pricing-box {
+            background: linear-gradient(135deg, #0c0c0c 0%, #050505 100%);
+            border: 1px solid var(--border);
+            border-radius: 48px;
+            padding: 80px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            gap: 40px;
         }
 
-        .price-features li::before {
-            content: "✓";
-            color: var(--accent);
+        .price-info h4 {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .price-tag {
+            font-size: 5rem;
             font-weight: 800;
+            color: #fff;
         }
 
-        /* Footer */
+        /* Utility */
+        .text-accent {
+            color: var(--accent);
+        }
+
         footer {
-            padding: 100px 0;
-            border-top: 1px solid var(--glass-border);
+            padding: 100px 0 60px;
+            border-top: 1px solid var(--border);
             text-align: center;
             color: var(--text-dim);
         }
@@ -387,8 +282,9 @@
         .footer-links a {
             color: var(--text-dim);
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: 600;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
@@ -396,23 +292,22 @@
         }
 
         @media (max-width: 1024px) {
+            .display-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .hero h1 {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
 
-            .bento-grid {
-                grid-template-rows: auto;
+            .section-header h2 {
+                font-size: 3rem;
             }
 
-            .card-large,
-            .card-small {
-                grid-column: span 12;
-                height: 500px;
-            }
-
-            .pricing-grid {
+            .pricing-box {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                padding: 40px;
             }
         }
     </style>
@@ -422,129 +317,121 @@
     <div class="container">
         <nav>
             <a href="index.html" class="logo">
-                <div class="logo-box"></div>
+                <div class="logo-ring"></div>
                 SCREENBALANCE
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#onboarding">Journey</a>
                 <a href="#pricing">Pricing</a>
                 <a href="support.html">Support</a>
                 <a href="privacy.html">Privacy</a>
             </div>
         </nav>
 
-        <section class="hero">
-            <span class="badge">V1.0.0 STABLE RELEASE</span>
+        <header class="hero">
             <h1>Stay present.<br>Life is happening.</h1>
-            <p>The world's most premium focus engine for iOS. Automatic awareness, strictly local, infinitely quiet.</p>
-            <a href="#" class="cta">Download for iOS</a>
+            <p>Refined focus tracking with sub-second precision. Reclaim your attention with the world's most premium
+                mindfulness engine for iOS.</p>
+            <a href="#" class="cta-primary">Download App</a>
+        </header>
 
-            <div class="hero-visual">
-                <img src="screen1.png" alt="Dashboard" class="main-phone">
-                <div class="float-elements">
-                    <div class="float-card" style="top: 10%; left: 15%; animation-delay: 0s;">
-                        <span style="color: var(--accent); font-weight: 800;">0.1s PRECISION</span>
-                        <p style="font-size: 0.8rem; opacity: 0.6;">Math you can trust.</p>
-                    </div>
-                    <div class="float-card" style="bottom: 20%; right: 10%; animation-delay: -3s;">
-                        <span style="color: #60a5fa; font-weight: 800;">LOCAL ONLY</span>
-                        <p style="font-size: 0.8rem; opacity: 0.6;">Zero servers. Zero risk.</p>
-                    </div>
-                </div>
+        <!-- Chapter 1: The Journey (Splash Screens) -->
+        <section class="section">
+            <div class="section-header">
+                <span>Part I</span>
+                <h2>The Visual Journey</h2>
+                <p>Pure design meets absolute transparency. Our interface establishes a baseline of trust from the very
+                    first interaction.</p>
+            </div>
+            <div class="display-grid">
+                <div class="phone-display"><img src="splash1.png" alt="Journey 1"></div>
+                <div class="phone-display"><img src="splash2.png" alt="Journey 2"></div>
+                <div class="phone-display"><img src="splash3.png" alt="Journey 3"></div>
+                <div class="phone-display"><img src="splash4.png" alt="Journey 4"></div>
             </div>
         </section>
 
-        <section id="features" class="grid-section">
-            <div class="bento-grid">
-                <div class="bento-card card-large">
-                    <span class="badge" style="margin-bottom: 10px;">CORE METRIC</span>
-                    <h3>Truthful Presence</h3>
-                    <p style="max-width: 400px;">Powered by a sub-second engine that calculates your presence score with
-                        0.1s precision. No rounding up. Just raw mathematical honesty about your attention.</p>
-                    <img src="screen1.png" alt="Detail" class="card-image">
+        <!-- Chapter 2: The Experience (App Screens) -->
+        <section class="section">
+            <div class="section-header">
+                <span>Part II</span>
+                <h2>The Presence Engine</h2>
+                <p>Advanced metrics and luxury themes. Transform your digital habits with mathematical honesty and
+                    stunning data visualization.</p>
+            </div>
+            <div class="display-grid">
+                <div class="phone-display"><img src="screen1.png" alt="App Screen 1"></div>
+                <div class="phone-display"><img src="screen2.png" alt="App Screen 2"></div>
+                <div class="phone-display"><img src="screen3.png" alt="App Screen 3"></div>
+                <div class="phone-display"><img src="screen4.png" alt="App Screen 4"></div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="section">
+            <div class="section-header">
+                <span>Technology</span>
+                <h2>Why it matters.</h2>
+                <p>Standard trackers are easy to cheat. ScreenBalance is built on integrity.</p>
+            </div>
+            <div class="features-row">
+                <div class="feature-item">
+                    <h3>0.1s Precision</h3>
+                    <p>Sub-second engine calculations. Every focused moment is captured with absolute mathematical
+                        honesty.</p>
                 </div>
-                <div class="bento-card card-small">
-                    <span class="badge" style="margin-bottom: 10px;">HABITS</span>
-                    <h3>60s Reset</h3>
-                    <p>The engine identifies rapid "shuffles" and requires a full 60.1s break to validate a new focus
-                        session.</p>
-                </div>
-                <div class="bento-card card-small">
-                    <span class="badge" style="margin-bottom: 10px;">AUDIT</span>
+                <div class="feature-item">
                     <h3>Zombie Healing</h3>
-                    <p>App-kills don't break your score. Our heartbeat monitor detects the 'zombie' session on relaunch
-                        and auto-repairs your timeline.</p>
+                    <p>App-kills don't break your score. Our heartbeat monitor auto-repairs your timeline to protect
+                        your progress.</p>
                 </div>
-                <div class="bento-card card-large">
-                    <span class="badge" style="margin-bottom: 10px;">LUXURY</span>
-                    <h3>Premium Themes</h3>
-                    <p style="max-width: 400px;">From Classic Zen to Midnight Emerald. Every pixel is crafted to look
-                        stunning on OLED displays, turning data into digital art.</p>
-                    <img src="screen3.png" alt="Themes" class="card-image">
+                <div class="feature-item">
+                    <h3>60s Reset Rule</h3>
+                    <p>Distinguish habit from intention. Fragments of use are grouped to identify the involuntary
+                        "shuffle."</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Strictly Local</h3>
+                    <p>No servers. No cloud. No accounts. Your data stays on your device, exactly where it belongs.</p>
                 </div>
             </div>
         </section>
 
-        <section id="onboarding" class="onboarding-section">
-            <div class="section-intro">
-                <span class="badge"
-                    style="background: rgba(255,215,0,0.1); color: #ffd700; border-color: rgba(255,215,0,0.2);">PHILOSOPHY</span>
-                <h2>The First Interaction</h2>
-                <p style="margin: 0 auto; max-width: 600px;">Onboarding isn't just a guide—it's establishing a core
-                    baseline of trust. Explore the journey from silence to score.</p>
-            </div>
-            <div class="gallery">
-                <div class="gallery-item"><img src="splash1.png" alt="Welcome"></div>
-                <div class="gallery-item"><img src="splash2.png" alt="Privacy"></div>
-                <div class="gallery-item"><img src="splash3.png" alt="The Rule"></div>
-                <div class="gallery-item"><img src="splash4.png" alt="Upgrade"></div>
-                <div class="gallery-item"><img src="screen2.png" alt="History"></div>
-                <div class="gallery-item"><img src="screen4.png" alt="Themes"></div>
-            </div>
-        </section>
-
-        <section id="pricing" class="pricing">
-            <span class="badge">ACCESS</span>
-            <h2>Choose Your Path</h2>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <span style="font-weight: 800; letter-spacing: 2px; color: var(--text-dim);">CORE</span>
-                    <div class="price-value">FREE</div>
-                    <ul class="price-features">
-                        <li>Automatic Presence Tracking</li>
-                        <li>7-Day Local History</li>
-                        <li>Classic Zen Theme</li>
-                        <li>Logical Reason Audits</li>
-                    </ul>
-                    <a href="#" style="color: var(--accent); font-weight: 800; text-decoration: none;">START FOCUSED</a>
+        <!-- Pricing -->
+        <section id="pricing" class="section">
+            <div class="pricing-box">
+                <div class="price-info">
+                    <span>LIFETIME ACCESS</span>
+                    <h4>One price.<br>All features.</h4>
+                    <p>Join the movement for intentional living.</p>
                 </div>
-                <div class="price-card featured">
-                    <span style="font-weight: 800; letter-spacing: 2px; color: var(--accent);">LIFETIME PRO</span>
-                    <div class="price-value">$0.99</div>
-                    <p style="color: var(--text-dim); text-decoration: line-through; margin-top: -15px;">$9.99</p>
-                    <ul class="price-features">
-                        <li>Full 30-Day Extrapolated History</li>
-                        <li>Exclusive Luxury Themes</li>
-                        <li>Custom Presence Goals</li>
-                        <li>Premium Share Cards</li>
-                        <li>Zero-Data Priority Support</li>
-                    </ul>
-                    <a href="#" class="cta" style="padding: 15px 40px; width: 100%;">UNLOCK EVERYTHING</a>
-                </div>
+                <div class="price-tag">$0.99</div>
+                <a href="#" class="cta-primary">Unlock Pro</a>
             </div>
         </section>
 
         <footer>
             <div class="footer-links">
                 <a href="index.html">Home</a>
-                <a href="support.html">Support</a>
                 <a href="privacy.html">Privacy</a>
+                <a href="support.html">Support</a>
                 <a href="https://github.com/deepak-kumar/screenbalance-distribution">Public Source</a>
             </div>
             <p>&copy; 2025 ScreenBalance. Built for the Intentional Generation.</p>
         </footer>
     </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(s => observer.observe(s));
+    </script>
 </body>
 
 </html>
